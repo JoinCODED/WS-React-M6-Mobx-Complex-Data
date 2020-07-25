@@ -1,5 +1,3 @@
-## Step 2: FormData
-
 When uploading an image to the backend, we saw that all of our data is saved in `req.body`, while the image is in `req.file`. To create an object that has both, we will use `FormData`, which is a pre-defined JavaScript class.
 
 1. In `createCookie`, create an instance of `FormData`.

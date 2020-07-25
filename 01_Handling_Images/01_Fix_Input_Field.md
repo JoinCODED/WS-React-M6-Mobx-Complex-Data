@@ -1,5 +1,3 @@
-## Step 1: Fix Input Field
-
 At the moment, the `image` field in our `CookieModal` form takes a string. We will change it so that it takes a file.
 
 1. In `CookieModal`, change the image's input field type from `text` to `file`.
