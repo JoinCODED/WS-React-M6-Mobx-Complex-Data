@@ -1,6 +1,6 @@
 At the moment, the `image` field in our `CookieModal` form takes a string. We will change it so that it takes a file.
 
-1. In `CookieModal`, change the image's input field type from `text` to `file` and remove the `value`. The `input` tag of type `file` does not have a `value`.
+1. In `CookieModal`, change the image's input field type from `text` to `file` and remove the `value`. The `value` of an `input` tag of type `file` is `read-only`, so that means it has to be an **Uncontrolled Component**.
 
    ```jsx
    <div className="form-group">
