@@ -56,31 +56,32 @@ But, what will our condition be? Basically, we want to make sure that all bakeri
 
 6. In `bakeryStore`, we will create a new property called `loading` and set its initial value to `true`.
 
-````javascript
-class BakeryStore {
-  bakeries = [];
-  loading = true;
+   ```javascript
+   class BakeryStore {
+   bakeries = [];
+   loading = true;
 
-  [...]
+   [...]
 
-}
+   }
+   ```
 
 7. Don't forget to add it to the `decorate` method as an `observable`.
 
-```javascript
-decorate(BakeryStore, {
-  bakeries: observable,
-  loading: observable,
-});
-````
+   ```javascript
+   decorate(BakeryStore, {
+     bakeries: observable,
+     loading: observable,
+   });
+   ```
 
 8. Back to `App.js`, we will check `bakeryStore.loading`, if it's `true` we will render the `Loading`, else we will render our routes. Don't forget to import `bakeryStore`.
 
-```jsx
-{
-  bakeryStore.loading ? <h1>Loadinggg</h1> : <Routes />;
-}
-```
+   ```jsx
+   {
+     bakeryStore.loading ? <h1>Loadinggg</h1> : <Routes />;
+   }
+   ```
 
 Let's check our website, we have our `Loadinggg`, but at some point when the data is received we need to turn it tot `false`!
 
