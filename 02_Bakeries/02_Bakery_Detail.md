@@ -94,4 +94,4 @@ return (
 );
 ```
 
-Amazing! Look at that! We even have a search bar and an add button.
+Amazing! Look at that! We even have a search bar and an add button!
