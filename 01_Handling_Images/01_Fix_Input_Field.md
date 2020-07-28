@@ -30,7 +30,7 @@ At the moment, the `image` field in our `CookieModal` form takes a string. We wi
    </div>
    ```
 
-3. But since this is a file, it will be saved in `event.target.file`.
+3. But since this is a file, it will be saved in `event.target.files`.
 
    ```jsx
    <div className="form-group">
@@ -44,7 +44,7 @@ At the moment, the `image` field in our `CookieModal` form takes a string. We wi
    </div>
    ```
 
-As you can see it gives you an array, that's because this input field can take multiple images. But we only want one image in this case! So we need to take the first index of `event.target.file` only. The problem is that we use one method to handle all our input fields! So we will create another method that handle the image only.
+As you can see it gives you an array, that's because this input field can take multiple images. But we only want one image in this case! So we need to take the first index of `event.target.file` only. The problem is that we use one method to handle all our input fields! So we will create another method that handles the image only.
 
 4. Create a method called `handleImage` that saves the first index of the event's file.
 
