@@ -43,22 +43,55 @@ What will we have in our bakery detail? The bakery's name and image, and a list 
 console.log("BakeryDetail -> bakery", bakery);
 ```
 
-5. So we can map over them and return a list of cookie items! Let's do that!
+So why not use the `CookieList` component instead of rewriting code?
 
-```javascript
-const cookieList = bakery.cookies.map((cookie) => (
-  <CookieItem cookie={cookie} />
-));
-```
+5. Change `CookieList` so that it receives `cookies` as a `prop`.
 
-6. Let's call it and fix the styling a bit
+   ```javascript
+   const CookieList = ({ cookies }) => {
+   const [query, setQuery] = useState("");
+
+   const cookieList = cookies
+   .filter((cookie) => cookie.name.toLowerCase().includes(query.toLowerCase()))
+   .map((cookie) => <CookieItem cookie={cookie} key={cookie.id} />);
+   ```
+
+6. Pass `cookieStore.cookies` as a `prop` to `CookieList` in `Routes.js`. Don't forget to import `cookieStore`.
 
 ```jsx
-<div>
-  <DetailWrapper>
-    <h4>{bakery.name}</h4>
-    <img src={bakery.image} />
-  </DetailWrapper>
-  <ListWrapper>{cookieList}</ListWrapper>
-</div>
+<Route path="/cookies">
+  <CookieList cookies={cookieStore.cookies} />
+</Route>
 ```
+
+7. In `BakeryDetail`, render `Cookieist` and pass `bakery.cookies` as a `prop`.
+
+```jsx
+<DetailWrapper>
+  <h4>{bakery.name}</h4>
+  <img src={bakery.image} />
+  <UpdateButton bakery={bakery} />
+</DetailWrapper>
+<CookieList cookies={bakery.cookies} />
+```
+
+8. Let's fix the styling a bit in `BakeryDetail`.
+
+```jsx
+return (
+  <div className="row">
+    <div className="container">
+      <DetailWrapper className="col-12">
+        <h4>{bakery.name}</h4>
+        <img src={bakery.image} />
+        <UpdateButton bakery={bakery} />
+      </DetailWrapper>
+    </div>
+    <div className="col-12">
+      <CookieList cookies={bakery.cookies} />
+    </div>
+  </div>
+);
+```
+
+Amazing! Look at that! We even have a search bar and an add button.
