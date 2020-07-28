@@ -22,7 +22,7 @@
 
 Updating the bakery is very similar to creating one. But what will the condition be? Updating a cookie requires no bakery.
 
-5. Let's start with rendering the `Update` button in `CookieDetail` and passing it `bakery`.
+5. Let's start with rendering the `Update` button in `BakeryDetail` and passing it `bakery`.
 
    ```jsx
    <DetailWrapper className="col-12">
