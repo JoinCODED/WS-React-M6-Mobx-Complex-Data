@@ -15,3 +15,35 @@
 ```
 
 4. Let's try creating a new bakery. Yes! It works!
+
+Updating the bakery is very similar to creating one. But what will the condition be? Updating a cookie requires no bakery.
+
+5. Let's start with rendering the `Update` button in `CookieDetail` and passing it `bakery`.
+
+   ```jsx
+   <DetailWrapper className="col-12">
+     <h4>{bakery.name}</h4>
+     <img src={bakery.image} />
+     <UpdateButton bakery={bakery} />
+   </DetailWrapper>
+   ```
+
+6. In `UpdateButton`, we have one of two choices, check if `cookie` or `bakery` exists. I'll check for the `bakery`.
+
+   ```jsx
+   {
+     bakery ? (
+       <BakeryModal
+         isOpen={isOpen}
+         closeModal={closeModal}
+         oldBakery={bakery}
+       />
+     ) : (
+       <CookieModal
+         isOpen={isOpen}
+         closeModal={closeModal}
+         oldCookie={cookie}
+       />
+     );
+   }
+   ```
