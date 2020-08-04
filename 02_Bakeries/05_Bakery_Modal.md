@@ -20,9 +20,21 @@
 
 4. Let's try creating a new bakery. Yes! It works!
 
+After creating a bakery, if you visit it directly you'll get an error. That's because when a bakery is first created, it doesn't have a `cookies` field.
+
+5. So in `BakeryDetail`, we will add a condition before rendering `CookieList`.
+
+   ```javascript
+   {
+     bakery.cookies && <CookieList cookies={bakery.cookies} />;
+   }
+   ```
+
+Now it works perfectly.
+
 Updating the bakery is very similar to creating one. But what will the condition be? Updating a cookie requires no bakery.
 
-5. Let's start with rendering the `Update` button in `BakeryDetail` and passing it `bakery`.
+6. Let's start with rendering the `Update` button in `BakeryDetail` and passing it `bakery`.
 
    ```jsx
    <DetailWrapper className="col-12">
@@ -32,7 +44,7 @@ Updating the bakery is very similar to creating one. But what will the condition
    </DetailWrapper>
    ```
 
-6. In `UpdateButton`, we have one of two choices, check if `cookie` or `bakery` exists. I'll check for the `bakery`.
+7. In `UpdateButton`, we have one of two choices, check if `cookie` or `bakery` exists. I'll check for the `bakery`.
 
    ```jsx
    {
