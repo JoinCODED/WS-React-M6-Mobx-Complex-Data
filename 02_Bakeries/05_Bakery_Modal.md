@@ -22,12 +22,10 @@
 
 After creating a bakery, if you visit it directly you'll get an error. That's because when a bakery is first created, it doesn't have a `cookies` field.
 
-5. So in `BakeryDetail`, we will add a condition before rendering `CookieList`.
+5. So in `CookieList`, we will give `cookies` a default value of an empty array.
 
    ```javascript
-   {
-     bakery.cookies && <CookieList cookies={bakery.cookies} />;
-   }
+   const CookieList = ({ cookies = [] }) => {
    ```
 
 Now it works perfectly.

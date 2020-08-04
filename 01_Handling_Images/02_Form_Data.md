@@ -47,3 +47,26 @@ When uploading an image to the backend, we saw that all of our data is saved in 
          const formData = new FormData();
          for (const key in updatedCookie) formData.append(key, updatedCookie[key]);
    ```
+
+If you try to update a cookie's image, you'll notice that the image is not updated! You need to refresh to see the image. The reason for that is that we can't directly use the file the user passed, so we will convert it into a URL using a built-in function.
+
+6. In `updateCookie`, after updating the data in the frontend, call the built-in method `URL.createObjectURL` which we will pass it the image file which is saved in `updatedCookie.image` and it will convert it into a URl. Then, we'll save this URL in `cookie.image`.
+
+   ```javascript
+   updateCookie = async (updatedCookie) => {
+   try {
+      // update in the backend
+      const formData = new FormData();
+      for (const key in updatedCookie) formData.append(key, updatedCookie[key]);
+      await axios.put(
+      `http://localhost:8000/cookies/${updatedCookie.id}`,
+      formData
+      );
+      // update in the frontend
+      const cookie = this.cookies.find(
+      (cookie) => cookie.id === updatedCookie.id
+      );
+      for (const key in updatedCookie) cookie[key] = updatedCookie[key];
+      cookie.image = URL.createObjectURL(updatedCookie.image);
+   }
+   ```
