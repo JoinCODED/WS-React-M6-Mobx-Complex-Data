@@ -39,12 +39,12 @@ At the moment, the `image` field in our `CookieModal` form takes a string. We wi
        name="image"
        type="file"
        className="form-control"
-       onChange={(event) => console.log(event.target.file)}
+       onChange={(event) => console.log(event.target.files)}
      />
    </div>
    ```
 
-As you can see it gives you an array, that's because this input field can take multiple images. But we only want one image in this case! So we need to take the first index of `event.target.file` only. The problem is that we use one method to handle all our input fields! So we will create another method that handles the image only.
+As you can see it gives you an array, that's because this input field can take multiple images. But we only want one image in this case! So we need to take the first index of `event.target.files` only. The problem is that we use one method to handle all our input fields! So we will create another method that handles the image only.
 
 4. Create a method called `handleImage` that saves the first index of the event's file.
 
