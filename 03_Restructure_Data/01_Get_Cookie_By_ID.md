@@ -1,4 +1,4 @@
-For the data ato be coming from one place only, we will fix the backend so that it sends a list of IDs only.
+For the data to be coming from one place only, we will fix the backend so that it sends a list of IDs only.
 
 1. Go to `bakeryList` function in `bakeryController`, and change the `Cookie` attributes so that only the `id` is sent.
 

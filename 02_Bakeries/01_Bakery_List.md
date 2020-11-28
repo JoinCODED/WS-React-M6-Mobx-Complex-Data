@@ -2,13 +2,11 @@ Let's start with creating a store for our bakeries and setting up our CRUD metho
 
 1. In the `stores` folder, create a file called `bakeryStore.js`.
 
-2. The fastest way to setup our store is by copying our `cookieStore` and changing every cookie to bakery. Easy right?
+2. The fastest way to setup our store is by copying our `cookieStore` and changing every cookie to bakery. But we only want the create and fetch methods. Easy right?
 
-3. Let's create a bakery list component. Create a folder called `BakeryList` and inside it create a file called `index.js`. For now we'll give it basic styling, a `container` class name and a title that already exist in our `styles` file.
+3. Let's create a bakery list component. Create a `BakeryList.js` for your file. We'll give it basic styling, a `container` class name and a title that already exist in our `styles` file.
 
    ```javascript
-   import React from "react";
-
    // Styles
    import { Title } from "../../styles";
 
@@ -42,7 +40,7 @@ Let's start with creating a store for our bakeries and setting up our CRUD metho
    </NavItem>
    ```
 
-6. Create a `BakeryItem` that takes `bakeries` as a `prop`, and render the `image` of the bakery and the `name` as the `alt`.
+6. Create a `BakeryItem` that takes `bakery` as a `prop`, and render the `image` of the bakery and the `name` as the `alt`.
 
    ```javascript
    import React from "react";
@@ -82,7 +80,7 @@ export const BakeryItemImage = styled.img`
 `;
 ```
 
-10. Let's also add a searching bar to our `BakeryList` component! Render `SearchBar`, set your state and `filter` your `bakeries`.
+10. Let's also add a searching bar to our `BakeryList` component! Render `SearchBar`, set your `query` state and `filter` your `bakeries`.
 
 ```javascript
 const [query, setQuery] = useState("");

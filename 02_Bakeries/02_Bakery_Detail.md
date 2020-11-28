@@ -1,10 +1,8 @@
-What will we have in our bakery detail? The bakery's name and image, and a list of all its products.
+What will we have in our bakery detail? The bakery's name and image, and a list of all its cookies.
 
 1.  Let's start by defining a `BakeryDetail` component.
 
     ```javascript
-    import React from "react";
-
     const BakeryDetail = () => {
       return <div>Bakery Detail</div>;
     };

@@ -2,7 +2,7 @@ Have you noticed that if you refresh the page while you're on the cookie's detai
 
 That's because the data is being rendered before it's completely fetched! So we need to do some kind of conditioning for our routes.
 
-1. First let's move all our routes to their own component, just to make the code easier to read. Create a component folder called `Routes`, and an `index.js` file inside it.
+1. First let's move all our routes to their own component, just to make the code easier to read. Create a component file called `Routes.js`.
 
 2. Move all the `Routes` along with `Switch` to `Routes.js`.
 
@@ -83,7 +83,7 @@ But, what will our condition be? Basically, we want to make sure that all bakeri
    }
    ```
 
-Let's check our website, we have our `Loadinggg`, but at some point when the data is received we need to turn it tot `false`!
+Let's check our website, we have our `Loadinggg` text, but at some point when the data is received we need to turn it to `false`!
 
 9. Now in `fetchBakeries`, after fetching the data from the backend **and** saving it in `this.bakeries`, we will set `this.loading` to `false`. So it will **only** be set to `false` when the data is received. Genius right?!
 
@@ -96,15 +96,15 @@ fetchBakeries = async () => {
   }
 ```
 
-10. Let's check the website. It's stuck on `Loading`! Why?? That's because `App` must be an `observer`. Don't forget to import `observe`.
+10. Let's check the website. It's stuck on `Loading`! Why?? That's because `App` must be an `observer`. Don't forget to import `observer` from `mobx-react`.
 
 ```javascript
 export default observer(App);
 ```
 
-11. Let's got to any bakery detail and refresh. Yaaas! No errors!
+11. Let's go to any bakery detail and refresh. Yaaas! No errors!
 
-12. But if we go to cookie detail and refresh we get an error! We need to add a `loading` property to the `cookieStore` as well`.
+12. But if we go to cookie detail and refresh we get an error! That's because we need to add a `loading` property to the `cookieStore` as well`.
 
 ```javascript
 class CookieStore {
