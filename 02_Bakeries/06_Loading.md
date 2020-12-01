@@ -58,21 +58,24 @@ But, what will our condition be? Basically, we want to make sure that all bakeri
 
    ```javascript
    class BakeryStore {
-   bakeries = [];
-   loading = true;
+     bakeries = [];
+     loading = true;
 
-   [...]
+     [...]
 
    }
    ```
 
-7. Don't forget to add it to the `decorate` method as an `observable`.
+7. Don't forget to add it to the `makeObservable` method as an `observable`.
 
    ```javascript
-   decorate(BakeryStore, {
-     bakeries: observable,
-     loading: observable,
-   });
+   constructor() {
+    makeObservable(this, {
+      bakeries: observable,
+      loading: observable,
+      fetchBakeries: action,
+    });
+   }
    ```
 
 8. Back to `App.js`, we will check `bakeryStore.loading`, if it's `true` we will render the `Loading`, else we will render our routes. Don't forget to import `bakeryStore`.
@@ -87,39 +90,45 @@ Let's check our website, we have our `Loadinggg` text, but at some point when th
 
 9. Now in `fetchBakeries`, after fetching the data from the backend **and** saving it in `this.bakeries`, we will set `this.loading` to `false`. So it will **only** be set to `false` when the data is received. Genius right?!
 
-```javascript
-fetchBakeries = async () => {
-  try {
-    const response = await axios.get("http://localhost:8000/bakeries");
-    this.bakeries = response.data;
-    this.loading = false;
-  }
-```
+   ```javascript
+   fetchBakeries = async () => {
+     try {
+       const response = await axios.get("http://localhost:8000/bakeries");
+       this.bakeries = response.data;
+       this.loading = false;
+     }
+   ```
 
 10. Let's check the website. It's stuck on `Loading`! Why?? That's because `App` must be an `observer`. Don't forget to import `observer` from `mobx-react`.
 
-```javascript
-export default observer(App);
-```
+    ```javascript
+    export default observer(App);
+    ```
 
 11. Let's go to any bakery detail and refresh. Yaaas! No errors!
 
 12. But if we go to cookie detail and refresh we get an error! That's because we need to add a `loading` property to the `cookieStore` as well`.
 
-```javascript
-class CookieStore {
-  cookies = [];
-  loading = true;
-```
+    ```javascript
+    class CookieStore {
+      cookies = [];
+      loading = true;
+    ```
 
 13. Make it `observable`.
 
-```javascript
-decorate(CookieStore, {
-  cookies: observable,
-  loading: observable,
-});
-```
+    ```javascript
+    constructor() {
+        makeObservable(this, {
+          cookies: observable,
+          loading: observable,
+          createCookie: action,
+          fetchCookies: action,
+          updateCookie: action,
+          deleteCookie: action,
+        });
+      }
+    ```
 
 14. Change your condition to check the `loading` in both stores.
 
