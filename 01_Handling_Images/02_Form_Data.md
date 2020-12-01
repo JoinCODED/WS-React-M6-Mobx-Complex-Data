@@ -15,7 +15,6 @@ When uploading an image to the backend, we saw that all of our data is saved in 
        try {
          const formData = new FormData();
          for (const key in newCookie) formData.append(key, newCookie[key]);
-         console.log("formData", formData);
        }
    ```
 
@@ -25,6 +24,7 @@ When uploading an image to the backend, we saw that all of our data is saved in 
    try {
      const formData = new FormData();
      for (const key in newCookie) formData.append(key, newCookie[key]);
+     console.log("formData", formData);
    }
    ```
 
