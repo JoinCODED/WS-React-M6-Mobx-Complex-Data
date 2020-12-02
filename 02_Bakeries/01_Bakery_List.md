@@ -8,7 +8,7 @@ Let's start with creating a store for our bakeries and setting up our CRUD metho
 
    ```javascript
    // Styles
-   import { Title } from "../../styles";
+   import { Title } from "../styles";
 
    const BakeryList = () => {
      return (
