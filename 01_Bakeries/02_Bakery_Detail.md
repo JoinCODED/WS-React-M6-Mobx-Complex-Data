@@ -54,7 +54,7 @@ What will we have in our bakery detail? The bakery's name and image, and a list 
    .map((cookie) => <CookieItem cookie={cookie} key={cookie.id} />);
    ```
 
-6. Pass `cookieStore.cookies` as a `prop` to `CookieList` in `Routes.js`. Don't forget to import `cookieStore`.
+6. Pass `cookieStore.cookies` as a `prop` to `CookieList` in `App.js`. Don't forget to import `cookieStore`.
 
    ```jsx
    <Route path="/cookies">
@@ -68,7 +68,7 @@ What will we have in our bakery detail? The bakery's name and image, and a list 
    <DetailWrapper>
      <h4>{bakery.name}</h4>
      <img src={bakery.image} />
-     <UpdateButton bakery={bakery} />
+     <AddButton bakery={bakery} />
    </DetailWrapper>
    <CookieList cookies={bakery.cookies} />
    ```
